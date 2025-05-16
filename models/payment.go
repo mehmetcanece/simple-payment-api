@@ -1,6 +1,10 @@
 package models
 
-type PaymentRequest struct {
-	Amount float64 `json:"amount"` //jsondan gelen alanın bunla eşleşmesi için bu sondakini yazdık
-	Method string  `json:"method"`
+import "gorm.io/gorm"
+
+type Payment struct {
+	gorm.Model
+	Amount float64
+	Method string
+	Status string
 }

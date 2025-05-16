@@ -4,18 +4,28 @@ import (
 	"fmt"
 	"net/http"
 
+	"simple-payment-api/database"
 	"simple-payment-api/models"
 
 	"github.com/gin-gonic/gin"
 )
 
 func PostPayment(c *gin.Context) {
-	var req models.PaymentRequest
+	var req models.Payment
 
 	if err := c.ShouldBindJSON(&req); err != nil { // jsondaki veriyle req structını eşleştirmeye çalışıyoruz eğer yanlış struct gelirse hata dönüyoruz doğruysa decam ediyoruz.
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid JSON"})
 		return
 	}
+
+	payment:= models.Payment{
+		Amount: req.Amount,
+		Method: req.Method,
+		Status: "pending",
+	}
+
+	database.DB.Create(&payment)
+	
 
 	fmt.Printf("Received payment: %.2f via %s\n", req.Amount, req.Method)
 
