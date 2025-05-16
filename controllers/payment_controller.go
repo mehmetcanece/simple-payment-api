@@ -46,5 +46,11 @@ func GetPayments(c *gin.Context)  {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": result.Error.Error()})
 			return
 		}
+		
+		
+		c.JSON(http.StatusOK, gin.H{
+			"status":  "Payment received",
+			"payment": payments,
+		})
 
 	}
