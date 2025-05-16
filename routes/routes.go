@@ -15,6 +15,7 @@ func InitRoutes() *gin.Engine{ // Geriye bir *gin.Engine döndürüyor !! Bu, Gi
 	})
 
 	r.POST("/payments",controllers.PostPayment) //post isteklerini paymentsa yönlendiriyoruz
+	r.GET("/payments", controllers.GetPayments)
 
 	return r
 }

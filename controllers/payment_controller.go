@@ -23,9 +23,7 @@ func PostPayment(c *gin.Context) {
 		Method: req.Method,
 		Status: "pending",
 	}
-
 	database.DB.Create(&payment)
-	
 
 	fmt.Printf("Received payment: %.2f via %s\n", req.Amount, req.Method)
 
@@ -37,3 +35,16 @@ func PostPayment(c *gin.Context) {
 		"method": req.Method,
 	})
 }
+
+func GetPayments(c *gin.Context)  {
+		var payments []models.Payment
+
+		// tüm ödeme kayıtlarını çekjcez dbden
+
+		result:= database.DB.Find(&payments)
+		if result.Error !=nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": result.Error.Error()})
+			return
+		}
+
+	}
