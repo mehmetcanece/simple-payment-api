@@ -52,5 +52,6 @@ func GetPayments(c *gin.Context)  { //dbden tüm ödemeleri çekiyoruz ve json o
 			"status":  "Payment received",
 			"payment": payments,
 		})
-
+	
 	}
+
