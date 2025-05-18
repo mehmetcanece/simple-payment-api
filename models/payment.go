@@ -8,3 +8,5 @@ type Payment struct {
 	Method string
 	Status string
 }
+
+// payment modelini tanımladım. dbdeki tabloya karşılık geliypr

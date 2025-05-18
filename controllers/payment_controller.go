@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func PostPayment(c *gin.Context) {
+func PostPayment(c *gin.Context) { //jsondan veriyi alıyoruz, model objesine dönüştürüyoruz payment diye. en son da dbye kaydediyoruz
 	var req models.Payment
 
 	if err := c.ShouldBindJSON(&req); err != nil { // jsondaki veriyle req structını eşleştirmeye çalışıyoruz eğer yanlış struct gelirse hata dönüyoruz doğruysa decam ediyoruz.
@@ -35,8 +35,8 @@ func PostPayment(c *gin.Context) {
 		"method": req.Method,
 	})
 }
-
-func GetPayments(c *gin.Context)  {
+ 
+func GetPayments(c *gin.Context)  { //dbden tüm ödemeleri çekiyoruz ve json olarak return ediyoruz
 		var payments []models.Payment
 
 		// tüm ödeme kayıtlarını çekjcez dbden

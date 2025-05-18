@@ -14,8 +14,8 @@ func InitRoutes() *gin.Engine{ // Geriye bir *gin.Engine döndürüyor !! Bu, Gi
 			"message": "Backend API is running"})
 	})
 
-	r.POST("/payments",controllers.PostPayment) //post isteklerini paymentsa yönlendiriyoruz
-	r.GET("/payments", controllers.GetPayments)
+	r.POST("/payments",controllers.PostPayment) //post isteklerini paymentsa yönlendiriyoruz. ödemeleri kaydediyoruz
+	r.GET("/payments", controllers.GetPayments) // get isteklerini paymentsa yönlendiriyoruz. ödemeleri listeliyoruz
 
 	return r
 }
